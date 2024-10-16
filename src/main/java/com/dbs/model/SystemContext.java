@@ -1,16 +1,18 @@
 package com.dbs.model;
 
-import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
 
+import org.yaml.snakeyaml.Yaml;
+
 public class SystemContext {
     private String OS;
     private String driver;
     private String driverdir;
-
+    private String testdatadir
+    ;
     public SystemContext(String propertiesFilePath) {
         loadProperties(propertiesFilePath);
     }
@@ -23,6 +25,7 @@ public class SystemContext {
             this.OS = (String) data.get("OS");
             this.driver = (String) data.get("driver");
             this.driverdir = (String) data.get("driverdir");
+            this.testdatadir = (String) data.get("testdatadir");
         } catch (FileNotFoundException e) {
             System.err.println("Properties file not found: " + filePath);
             e.printStackTrace();
@@ -49,6 +52,9 @@ public class SystemContext {
 
     public String getDriverdir() {
         return driverdir;
+    }
+    public String getTestDatadir() {
+        return testdatadir;
     }
 
     // ToString method for easy debugging

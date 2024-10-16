@@ -32,7 +32,7 @@ public class LoginTests {
     // Initiating driver and context
     @BeforeTest
     public void setUp() {
-        ctx = new SystemContext(".\\resources\\application.properties");
+        ctx = new SystemContext("/home/yohan/portfolio/seleniumdemo/resources/application.properties");
         driver = WebDriverFactory.getDriver(ctx);
         wait = WebDriverFactory.getWebDriverWait();
     }
@@ -94,7 +94,7 @@ public class LoginTests {
             // Create ObjectMapper instance
             Login loginPage = new Login();
             ObjectMapper objectMapper = new ObjectMapper();
-            File jsonFile = new File("src\\test\\java\\com\\dbs\\Testdata\\login.json");
+            File jsonFile = new File(ctx.getTestDatadir()+"/login.json");
             // Read JSON file and convert to HashMap
             List<Map<String, Object>> list = objectMapper.readValue(jsonFile,
                     new TypeReference<List<Map<String, Object>>>() {
