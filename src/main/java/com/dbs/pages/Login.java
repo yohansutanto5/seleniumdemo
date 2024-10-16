@@ -57,7 +57,7 @@ public class Login {
         } else {
             System.out.println("Failed Login");
         }
-        driver.quit();
+        // driver.quit();
     }
 
     @Then("an error message is displayed")
@@ -65,7 +65,7 @@ public class Login {
         if (driver.findElement(flash).getText().contains("Your username is invalid!")){
             System.out.println("Unsuccessful Login");
         }
-        driver.quit();
+        // driver.quit();
     }
 
     public void OpenLoginPage(WebDriverWait wait,WebDriver driver){

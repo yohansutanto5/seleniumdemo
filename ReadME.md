@@ -18,6 +18,7 @@ At resource folder please define which driver (options are : chrome,edge,firefox
 - Maven for dependency management and build automation 
 - TestNG for test execution and assertions
 - WebDriver manager to manage multiple browser
+- Cucumber as BDD Framework for more readable test case
 
 selenium-demo/ 
 │ ├── src/ 
