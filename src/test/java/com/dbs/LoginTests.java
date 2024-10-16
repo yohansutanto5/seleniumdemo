@@ -32,7 +32,7 @@ public class LoginTests {
     // Initiating driver and context
     @BeforeTest
     public void setUp() {
-        ctx = new SystemContext("/home/yohan/portfolio/seleniumdemo/resources/application.properties");
+        ctx = new SystemContext("./resources/application.properties");
         driver = WebDriverFactory.getDriver(ctx);
         wait = WebDriverFactory.getWebDriverWait();
     }
