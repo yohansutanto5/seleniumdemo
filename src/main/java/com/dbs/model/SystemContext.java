@@ -17,6 +17,7 @@ public class SystemContext {
         loadProperties(propertiesFilePath);
     }
 
+    @SuppressWarnings("CallToPrintStackTrace")
     private void loadProperties(String filePath) {
         Yaml yaml = new Yaml();
         try (InputStream inputStream = new FileInputStream(filePath)) {
@@ -41,13 +42,11 @@ public class SystemContext {
     }
 
     public String getDriver() {
-        if (this.driver.equals("chrome")) {
-            return "webdriver.chrome.driver";
-        } else if (this.driver.equals("firefox")) {
-            return "webdriver.firefox.driver";
-        } else {
-            return "webdriver.edge.driver";
-        }
+        return switch (this.driver) {
+            case "chrome" -> "webdriver.chrome.driver";
+            case "firefox" -> "webdriver.firefox.driver";
+            default -> "webdriver.edge.driver";
+        };
     }
 
     public String getDriverdir() {
