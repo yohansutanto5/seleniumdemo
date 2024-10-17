@@ -1,7 +1,5 @@
 package com.dbs.utils;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -9,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.dbs.model.SystemContext;
@@ -20,18 +17,20 @@ public class WebDriverFactory {
 
     @SuppressWarnings("CallToPrintStackTrace")
     public static WebDriver getDriver(SystemContext ctx) {
-        System.setProperty(ctx.getDriver(), ctx.getDriverdir());
+        // System.setProperty(ctx.getDriver(), ctx.getDriverdir());
         if (driver == null) {
             switch (ctx.getDriver().toLowerCase()) {
                 case "firefox" -> driver = new FirefoxDriver();
                 case "edge" -> driver = new EdgeDriver();
                 case "chrome" -> driver = new ChromeDriver();
                 case "remote" -> {
-                    try {
-                        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), new ChromeOptions());
-                    } catch (MalformedURLException e) {
-                        System.out.println("Remote URL is incorrect");
-                    }
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--headless");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                    options.addArguments("--disable-gpu");
+                    // Initialize WebDriverm
+                    driver = new ChromeDriver(options);
                 }
                 default -> driver = new ChromeDriver();
             }

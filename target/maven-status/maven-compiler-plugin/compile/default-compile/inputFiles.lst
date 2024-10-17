@@ -1,4 +1,5 @@
 /home/yohan/portfolio/seleniumdemo/src/main/java/com/dbs/utils/WebDriverFactory.java
+/home/yohan/portfolio/seleniumdemo/src/main/java/com/dbs/pages/Hooks.java
 /home/yohan/portfolio/seleniumdemo/src/main/java/com/dbs/pages/Login.java
 /home/yohan/portfolio/seleniumdemo/src/main/java/com/dbs/App.java
 /home/yohan/portfolio/seleniumdemo/src/main/java/com/dbs/model/SystemContext.java

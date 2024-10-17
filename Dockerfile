@@ -1,21 +1,23 @@
-# Use a base image with Java 17 installed
-FROM eclipse-temurin:17-jdk
+FROM selenium/standalone-chrome:latest
+# Install Java
+USER root
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk && \
+    apt-get clean
 
-# Install wget, unzip, and other necessary tools
-RUN apt-get update && apt-get install -y wget unzip curl gnupg
+# Ensure Maven is installed (optional)
+RUN apt-get install -y maven && \
+    apt-get clean
 
-# Install Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list \
-    && apt-get update && apt-get install -y google-chrome-stable
-
-# Install Maven
-RUN apt-get install -y maven
-
-# Set up working directory
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copy the project files
+# Copy your project files into the container
 COPY . .
-# Run Maven test
+
+# Build the project (assumes a pom.xml file is present)
+# RUN mvn clean
+# RUN mvn dependency:resolve
+
+# Command to run tests
 CMD ["mvn", "test"]

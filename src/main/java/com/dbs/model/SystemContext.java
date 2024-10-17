@@ -45,6 +45,7 @@ public class SystemContext {
         return switch (this.driver) {
             case "chrome" -> "webdriver.chrome.driver";
             case "firefox" -> "webdriver.firefox.driver";
+            case "remote" -> "remote";
             default -> "webdriver.edge.driver";
         };
     }

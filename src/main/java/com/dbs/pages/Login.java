@@ -27,9 +27,15 @@ public class Login {
     @Given("the user is on the login page")
     public void theUserIsOnTheLoginPage() {
         SystemContext ctx = new SystemContext("./resources/application.properties");
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         driver = WebDriverFactory.getDriver(ctx);
         driver.get("https://the-internet.herokuapp.com/login");
+        try {
+            System.out.println("Sleeping for 3 seconds...");
+            Thread.sleep(7000); // Sleep for 3000 milliseconds (3 seconds)
+            System.out.println("Awake!");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("the user enters valid credentials")
@@ -117,7 +123,6 @@ public class Login {
             elem.click();
         } catch (NoSuchElementException e) {
             // Element not found, do nothing
-            // Optionally, you can log this event
             System.out.println("Logout button not found. No action taken.");
         }
     }
