@@ -11,7 +11,7 @@ Before you begin, ensure you have the following installed:
 - ChromeDriver (compatible with your Chrome version)
 
 ## Application properties
-At resource folder please define which driver (options are : chrome,edge,firefox) which server (options: windows and linux) and location of the driver on your machine.
+At resource folder please define which driver (options are : chrome,edge,firefox,remote) which server (options: windows and linux) and location of the driver on your machine.
 
 ## Project Structure
 - Utilizes Page Object Model (POM) design pattern 
@@ -45,10 +45,10 @@ selenium-demo/
 **notes** Due to DBS extension, random pop up may appear during succesfull login. You need to click OK manually to close the extension.
 4. Check Test result The test reports will be available in the `target` directory of your current location. 
 
-### Method 2: Using Docker (Unfinished) 
+### Method 2: Using Docker (RECCOMENDED) 
 If you prefer to run the tests in a containerized environment: 
 1. Build the Docker image: docker build -t selenium-demo
-2. Run container : docker run --name selenium-test selenium-demo
+2. Run container : docker run -it --name selenium-test selenium-demo
 3. Copy the test report to local directory : docker cp selenium-test:/usr/src/app/target ./target
 
 The test reports will be available in the `target` directory of your current location. 

@@ -29,13 +29,6 @@ public class Login {
         SystemContext ctx = new SystemContext("./resources/application.properties");
         driver = WebDriverFactory.getDriver(ctx);
         driver.get("https://the-internet.herokuapp.com/login");
-        try {
-            System.out.println("Sleeping for 3 seconds...");
-            Thread.sleep(7000); // Sleep for 3000 milliseconds (3 seconds)
-            System.out.println("Awake!");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @When("the user enters valid credentials")
